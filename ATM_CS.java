@@ -213,32 +213,3 @@ public class ATM_CS {
 	   
    }
 }
-class Useraccount{
-	private int accountnum;
-	private int pin;
-	private double balance;
-	Useraccount(int acc_num,int pin){
-		this.accountnum=acc_num;
-		this.pin=pin;
-		balance=0;
-	}
-	public int getaccountnum() {
-		return this.accountnum;
-	}
-	public void credit(double amount) {
-		this.balance+=amount;
-	}
-	public void debit(double amount) {
-		this.balance-=amount;
-	}
-	public double getaccbalance() {
-		return this.balance;
-	}
-	public boolean ispinvalid(int pin) {
-		if(this.pin==pin)
-			return true;
-		else
-			return false;
-	}
-	
-}
