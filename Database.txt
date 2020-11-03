@@ -1,0 +1,47 @@
+//Taken account numbers from 00000 to 50000 and for pin numbers add+1 to account number
+class Database{
+	private Useraccount[] data;
+	Database(){
+		data=new Useraccount[50001];
+		for(int i=0;i<50001;i++) {
+			this.data[i]=new Useraccount(i,i+1);
+		}
+	}
+	private Useraccount searchaccount(int num) {
+		for(Useraccount i:data) {
+			if(i.getaccountnum()==num)
+				return i;
+		}
+		return null;
+	}
+	public void credit(int num,double amount) {
+		searchaccount(num).credit(amount);
+	}
+	public void debit(int num,double amount) {
+		searchaccount(num).debit(amount);
+	}
+	public double getbalance(int num) {
+		return searchaccount(num).getaccbalance();
+	}
+	public boolean isuservalid(int num,int pin) {
+		if(searchaccount(num)!=null) {
+			return searchaccount(num).ispinvalid(pin);
+		}
+		else
+			return false;
+	}
+	
+}
+class Balanceinquiry{
+	private int accnum;
+	private Database data;
+	public Balanceinquiry(int num,Database bankdata) {
+		this.accnum=num;
+		this.data=bankdata;
+	}
+	void execute() {
+		double balance=data.getbalance(accnum);
+		System.out.println("Your account balance is:");
+		System.out.println(balance);
+	}
+}

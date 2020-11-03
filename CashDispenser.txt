@@ -1,0 +1,20 @@
+class CashDispenser{
+	private static final int COUNT=5000;
+	private int count;
+	CashDispenser(){
+		count=COUNT;
+	}
+	public boolean iscashavailable(int amount) {
+		int cnt=amount/100;
+		if(count>=cnt) {
+			return true;
+		}
+		else 
+			return false;
+			
+	}
+	public void cashdispensed(int amount) {
+	   int cnt=amount/100;
+	   count-=cnt;	
+	}
+}
